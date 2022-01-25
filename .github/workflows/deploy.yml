@@ -12,13 +12,20 @@ on:
 
 # Authenticate to the the server via ssh
 # and run our deployment script
+    - name: git init
+      run: git init
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-  - name: Install SSH Key
-    uses: shimataro/ssh-key-action@v2
-    with:
-      key: ${{ secrets.SSHKEY }}
-      known_hosts: 'just-a-placeholder-so-we-dont-get-errors'
-
+      - uses: actions/checkout@v2
+       - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2
+      - name: Deploy to server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          port: ${{ secrets.PORT }}
+          key: ${{ secrets.SSHKEY }}
+          script: "cd ~/erty && ./.scripts/deploy.sh"
