@@ -12,6 +12,8 @@ on:
 
 # Authenticate to the the server via ssh
 # and run our deployment script
+    - name: git init
+      run: git init
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -24,4 +26,4 @@ jobs:
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSHKEY }}
-          script: "~/erty && ./.scripts/deploy.sh"
+          script: "cd ~/erty && ./.scripts/deploy.sh"
