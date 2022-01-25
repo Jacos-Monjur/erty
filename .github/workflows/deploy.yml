@@ -12,8 +12,7 @@ on:
 
 # Authenticate to the the server via ssh
 # and run our deployment script
-    - name: git init
-      run: git init
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
