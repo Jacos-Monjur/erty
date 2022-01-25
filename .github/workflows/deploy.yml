@@ -12,13 +12,12 @@ on:
 
 # Authenticate to the the server via ssh
 # and run our deployment script
-    - name: git init
-      run: git init
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+       - uses: shimataro/ssh-key-action@v2
       - name: Deploy to server
         uses: appleboy/ssh-action@master
         with:
