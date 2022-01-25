@@ -24,8 +24,4 @@ jobs:
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.DEPLOY_KEY }}
-          script:
-           - apt-get update
-          - apt-get -qq install git-ftp
-          - git ftp push --force --user $FTP_USERNAME --passwd $FTP_PASSWORD ftp.ptzend.com/
-
+          script: "cd /var/www/html && ./.scripts/deploy.sh"
