@@ -23,5 +23,5 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
-          key: ${{ secrets.DEPLOY_KEY }}
+          key: ${{ secrets.SSHKEY }}
           script: "cd ~/erty && ./.scripts/deploy.sh"
